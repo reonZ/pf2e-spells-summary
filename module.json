@@ -1,0 +1,45 @@
+{
+    "id": "pf2e-spells-summary",
+    "title": "PF2e Spells Summary",
+    "author": "Idle",
+    "description": "This module offers the ability to toggle between the regular and an alternate version of the character sheet's `Spellcasting` tab at any moment.",
+    "authors": [
+        {
+            "name": "Idle",
+            "discord": "Idle#3251"
+        }
+    ],
+    "esmodules": ["scripts/main.js"],
+    "styles": ["styles/sheet.css"],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+    "version": "1.0.0",
+    "relationships": {
+        "systems": [
+            {
+                "id": "pf2e",
+                "type": "system",
+                "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
+                "compatibility": {
+                    "minimum": "4.2.0"
+                }
+            }
+        ]
+    },
+    "compatibility": {
+        "minimum": "10.287",
+        "verified": "10"
+    },
+    "manifestPlusVersion": "1.2.0",
+    "url": "https://github.com/reonZ/pf2e-spells-summary",
+    "readme": "https://github.com/reonZ/pf2e-spells-summary/blob/master/README.md",
+    "manifest": "https://raw.githubusercontent.com/reonZ/pf2e-spells-summary/master/module.json",
+    "download": "https://github.com/reonZ/pf2e-spells-summary/releases/download/1.0.0/module.zip",
+    "changelog": "https://github.com/reonZ/pf2e-spells-summary/releases",
+    "bugs": "https://github.com/reonZ/pf2e-spells-summary/issues"
+}

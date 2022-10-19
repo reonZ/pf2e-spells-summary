@@ -1,0 +1,176 @@
+<ol class="directory-list spell-list summary">
+    {{#each entries as |entry i|}}
+    {{#if entry.spells}}
+    <li class="spell-level-header spellbook-header item">
+        <div class="item-name flexrow">
+            <h3>
+                {{#if entry.level}}
+                {{localize 'PF2E.LevelN' level=entry.level}}
+                {{else}}
+                {{localize 'PF2E.SpellCantripLabel'}}
+                {{/if}}
+            </h3>
+        </div>
+
+        <div class="spell-range"></div>
+
+        <div class="spell-components">{{localize "PF2E.SpellComponentsLabel"}}</div>
+
+        <div class="item-controls">Check / DC</div>
+    </li>
+
+    {{#each entry.spells as |spell|}}
+    <li 
+        class="item spell{{#if spell.isVirtual}} virtual{{/if}}" 
+        data-item-id="{{spell.id}}"
+        data-entry-id="{{spell.entryId}}"
+        data-slot-level="{{entry.level}}"
+        {{#if spell.isPrepared}}data-slot-id="{{spell.slotId}}"{{/if}}
+        data-item-summary-id="{{spell.id}}-{{entry.level}}-{{spell.slotId}}"
+        data-expended-state="{{spell.expended}}"
+    >
+        <div class="item-name">
+            <div class="item-image">
+                <img class="item-icon" src="{{spell.img}}" alt="{{spell.name}}" />
+            </div>
+            <h4>{{spell.name}}{{{actionGlyph spell.icon}}}</h4>
+        </div>
+
+        <div class="spell-range">
+            {{#if (and spell.isInnate spell.uses)}}
+            <span class="uses-label">{{localize 'PF2E.PreparationTypeInnate'}}</span>
+            <div class="uses">
+                <span class="spell-slots-input">
+                    <input 
+                        type="number" 
+                        data-item-id="{{spell.id}}" 
+                        data-item-property="system.location.uses.value" 
+                        value="{{spell.uses.value}}" 
+                        placeholder="0"
+                        {{#unless @root.editable}} disabled{{/unless}}
+                    />
+                </span>
+                <span class="slash"> / </span>
+                <span class="spell-max-input">
+                    <input type="number" value="{{spell.uses.max}}" placeholder="0" disabled />
+                </span>
+                {{#if @root.editable}}
+                <a class="spell-slots-increment-reset" data-item-id="{{spell.id}}"><i class="fas fa-redo"></i></a>
+                {{/if}}
+            </div>
+
+            {{else if spell.isInnate}}
+            {{localize 'PF2E.PreparationTypeInnate'}}
+
+            {{else if spell.isPrepared}} 
+            {{localize 'PF2E.SpellPreparedLabel'}} 
+            {{#if (and @root.editable (not entry.isCantrip))}}
+                <a class="item-control item-toggle-prepare">
+                    <i class="fas fa-fw {{#if spell.expended}}fa-plus-square{{else}}fa-minus-square{{/if}}"></i>
+                </a>
+            {{/if}}
+
+            {{else if (and @root.editable spell.isFocus (not entry.isCantrip))}}
+            <span class="focus-label">{{localize 'PF2E.SpellFocusLabel'}}</span>
+            <span class="pips focus-pips">
+                {{#times @root.focusPool.max}}
+                <i class="{{#if (gt @root.focusPool.value this)}}fas fa-dot-circle{{else}}far fa-circle{{/if}}"></i>
+                {{/times}}
+            </span>
+
+            {{else if spell.isFocus}}
+            {{localize 'PF2E.SpellFocusLabel'}}
+
+            {{else if (and spell.isSpontaneous spell.parentUses)}}
+            <span class="uses-label">{{localize 'PF2E.PreparationTypeSpontaneous'}}</span>
+            <div class="uses">
+                <span class="spell-slots-input">
+                    <input 
+                        type="number" 
+                        data-item-id="{{spell.entryId}}" 
+                        data-item-property="system.slots.slot{{entry.level}}.value"
+                        value="{{spell.parentUses.value}}" 
+                        placeholder="0" 
+                        {{#unless @root.editable}} disabled{{/unless}}
+                    />
+                </span>
+                <span class="slash"> / </span>
+                <span class="spell-max-input">
+                    <input type="number" value="{{spell.parentUses.max}}" placeholder="0" disabled />
+                </span>
+                {{#if @root.editable}}
+                <a class="spell-slots-increment-reset" data-item-id="{{spell.entryId}}" data-level="{{entry.level}}">
+                    <i class="fas fa-redo"></i>
+                </a>
+                {{/if}}
+            </div>
+
+            {{else if spell.isSpontaneous}}
+            {{localize 'PF2E.PreparationTypeSpontaneous'}}
+
+            {{/if}}
+        </div>
+
+        <div class="spell-components tags">
+            {{#if spell.components.focus}}
+            <span class="tag tag_transparent">{{localize "PF2E.SpellComponentShortF"}}</span>
+            {{/if}} {{#if spell.components.material}}
+            <span class="tag tag_transparent">{{localize "PF2E.SpellComponentShortM"}}</span>
+            {{/if}} {{#if spell.components.somatic}}
+            <span class="tag tag_transparent">{{localize "PF2E.SpellComponentShortS"}}</span>
+            {{/if}} {{#if spell.components.verbal}}
+            <span class="tag tag_transparent">{{localize "PF2E.SpellComponentShortV"}}</span>
+            {{/if}}
+        </div>
+
+        {{#if @root.editable}}
+        <button type="button" class="cast-spell">{{localize "PF2E.CastLabel"}}</button>
+        {{/if}}
+
+        <div class="item-controls">{{numberFormat spell.check.mod decimals=0 sign=true}} / {{spell.dc.value}}</div>
+
+        <div class="item-summary"></div>
+    </li>
+    {{/each}}
+    {{/if}}
+    {{/each}}
+
+    {{#if rituals.length}}
+    <li class="spell-level-header spellbook-header item ritual">
+        <div class="item-name flexrow">
+            <h3>{{localize 'PF2E.SpellRitualLabel'}}</h3>
+        </div>
+
+        <div class="spell-range">{{localize 'PF2E.LevelLabel'}}</div>
+
+        <div class="spell-components">{{localize "PF2E.SpellTimeLabel"}}</div>
+
+        <div class="item-controls"></div>
+    </li>
+
+    {{#each rituals as |spell|}}
+    <li 
+        class="item spell ritual" 
+        data-item-id="{{spell.id}}"
+        data-entry-id="{{spell.entryId}}"
+        data-slot-level="{{spell.level}}"
+        data-item-summary-id="{{spell.id}}-{{spell.level}}-{{spell.slotId}}"
+    >
+        <div class="item-name">
+            <div class="item-image">
+                <img class="item-icon" src="{{spell.img}}" alt="{{spell.name}}" />
+            </div>
+            <h4>{{spell.name}}</h4>
+        </div>
+
+        <div class="spell-range">{{spell.level}}</div>
+
+        <div class="spell-components">{{spell.time}}</div>
+
+        {{#if @root.editable}}
+        <button type="button" class="cast-spell">{{localize "PF2E.CastLabel"}}</button>
+        {{/if}}
+    </li>
+    {{/each}}
+    {{/if}}
+</ol>

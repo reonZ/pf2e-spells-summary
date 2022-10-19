@@ -1,0 +1,47 @@
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting].toggled > .directory-list:not(.summary) {
+  display: none;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting]:not(.toggled) > .directory-list.summary {
+  display: none;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spellbook-header .item-controls {
+  padding: 0;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .ritual .spell-range,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .ritual .spell-components {
+  justify-self: center;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .ritual button {
+  grid-column: controls;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .virtual {
+  position: relative;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .virtual:before {
+  background-color: rgba(0, 5, 255, 0.114);
+  content: "";
+  height: 100%;
+  mix-blend-mode: saturation;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(:hover):not(.hover) .spell-range .uses,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(:hover):not(.hover) .spell-range .focus-pips {
+  display: none;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:hover .spell-range .uses-label,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:hover .spell-range .focus-label, .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.hover .spell-range .uses-label,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.hover .spell-range .focus-label {
+  display: none;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spell-range .item-toggle-prepare {
+  margin-left: 0.25em;
+  color: var(--body);
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spell-range .focus-pips {
+  cursor: pointer;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item-summary {
+  display: none;
+}

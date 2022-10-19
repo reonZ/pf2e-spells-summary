@@ -1,0 +1,80 @@
+.app.sheet.actor.character .sheet-content > .tab[data-tab='spellcasting'] {
+    &.toggled {
+        > .directory-list:not(.summary) {
+            display: none;
+        }
+    }
+
+    &:not(.toggled) {
+        > .directory-list.summary {
+            display: none;
+        }
+    }
+
+    > .directory-list.summary {
+        .spellbook-header .item-controls {
+            padding: 0;
+        }
+
+        .ritual {
+            .spell-range,
+            .spell-components {
+                justify-self: center;
+            }
+
+            button {
+                grid-column: controls;
+            }
+        }
+
+        .virtual {
+            position: relative;
+
+            &:before {
+                background-color: rgba(0, 5, 255, 0.114);
+                content: '';
+                height: 100%;
+                mix-blend-mode: saturation;
+                pointer-events: none;
+                position: absolute;
+                width: 100%;
+            }
+        }
+
+        .item {
+            &:not(:hover):not(.hover) {
+                .spell-range {
+                    .uses,
+                    .focus-pips {
+                        display: none;
+                    }
+                }
+            }
+
+            &:hover,
+            &.hover {
+                .spell-range {
+                    .uses-label,
+                    .focus-label {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .spell-range {
+            .item-toggle-prepare {
+                margin-left: 0.25em;
+                color: var(--body);
+            }
+
+            .focus-pips {
+                cursor: pointer;
+            }
+        }
+
+        .item-summary {
+            display: none;
+        }
+    }
+}

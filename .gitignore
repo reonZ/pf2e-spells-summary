@@ -1,0 +1,6 @@
+.git/
+releases/
+node_modules/
+@types/
+@types
+*.lock
