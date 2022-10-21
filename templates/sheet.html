@@ -21,7 +21,7 @@
 
     {{#each entry.spells as |spell|}}
     <li 
-        class="item spell{{#if spell.isVirtual}} virtual{{/if}}" 
+        class="item spell{{#if spell.isVirtual}} virtual{{/if}}{{#if entry.isCantrip}} cantrip{{/if}}" 
         data-item-id="{{spell.id}}"
         data-entry-id="{{spell.entryId}}"
         data-slot-level="{{entry.level}}"
@@ -62,14 +62,6 @@
             {{else if spell.isInnate}}
             {{localize 'PF2E.PreparationTypeInnate'}}
 
-            {{else if spell.isPrepared}} 
-            {{localize 'PF2E.SpellPreparedLabel'}} 
-            {{#if (and @root.editable (not entry.isCantrip))}}
-                <a class="item-control item-toggle-prepare">
-                    <i class="fas fa-fw {{#if spell.expended}}fa-plus-square{{else}}fa-minus-square{{/if}}"></i>
-                </a>
-            {{/if}}
-
             {{else if (and @root.editable spell.isFocus (not entry.isCantrip))}}
             <span class="focus-label">{{localize 'PF2E.SpellFocusLabel'}}</span>
             <span class="pips focus-pips">
@@ -81,8 +73,15 @@
             {{else if spell.isFocus}}
             {{localize 'PF2E.SpellFocusLabel'}}
 
-            {{else if (and spell.isSpontaneous spell.parentUses)}}
-            <span class="uses-label">{{localize 'PF2E.PreparationTypeSpontaneous'}}</span>
+            {{else if (and (or spell.isSpontaneous spell.isFlexible) spell.parentUses)}}
+            <span class="uses-label">
+                {{#if spell.isSpontaneous}}
+                {{localize 'PF2E.PreparationTypeSpontaneous'}}
+                {{else}}
+                {{localize 'PF2E.SpellFlexibleLabel'}}
+                {{/if}}
+            </span>
+            {{#unless entry.isCantrip}}
             <div class="uses">
                 <span class="spell-slots-input">
                     <input 
@@ -104,9 +103,18 @@
                 </a>
                 {{/if}}
             </div>
+            {{/unless}}
 
             {{else if spell.isSpontaneous}}
             {{localize 'PF2E.PreparationTypeSpontaneous'}}
+
+            {{else if spell.isPrepared}} 
+            {{localize 'PF2E.SpellPreparedLabel'}} 
+            {{#if (and @root.editable (not entry.isCantrip))}}
+                <a class="item-control item-toggle-prepare">
+                    <i class="fas fa-fw {{#if spell.expended}}fa-plus-square{{else}}fa-minus-square{{/if}}"></i>
+                </a>
+            {{/if}}
 
             {{/if}}
         </div>

@@ -28,6 +28,7 @@ declare interface SpellcastingLevelSpell extends SpellcastingLevelSpellCore {
     isVirtual: boolean
     components: { focus: boolean; material: boolean; somatic: boolean; verbal: boolean }
     isPrepared: boolean
+    isFlexible: boolean
     isInnate: boolean
     isSpontaneous: boolean
     isFocus: boolean

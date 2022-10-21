@@ -26,13 +26,13 @@
   position: absolute;
   width: 100%;
 }
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(:hover):not(.hover) .spell-range .uses,
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(:hover):not(.hover) .spell-range .focus-pips {
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-range .uses,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-range .focus-pips {
   display: none;
 }
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:hover .spell-range .uses-label,
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:hover .spell-range .focus-label, .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.hover .spell-range .uses-label,
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.hover .spell-range .focus-label {
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):hover .spell-range .uses-label,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):hover .spell-range .focus-label, .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip).hover .spell-range .uses-label,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip).hover .spell-range .focus-label {
   display: none;
 }
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spell-range .item-toggle-prepare {

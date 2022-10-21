@@ -120,6 +120,7 @@ function getEntries(data) {
         const check = entry.statistic.check
         const dc = entry.statistic.dc
         const isPrepared = !!entry.isPrepared
+        const isFlexible = !!entry.isFlexible
         const isFocus = !!entry.isFocusPool
         const isSpontaneous = !!entry.isSpontaneous
         const isInnate = !!entry.isInnate
@@ -148,6 +149,7 @@ function getEntries(data) {
                         entryId: entry.id,
                         slotId: i,
                         isPrepared,
+                        isFlexible,
                         isInnate,
                         isSpontaneous,
                         isFocus,
@@ -156,13 +158,13 @@ function getEntries(data) {
                         parentUses: level.uses,
                         expended: level.isCantrip
                             ? false
-                            : isPrepared
+                            : isPrepared && !isFlexible
                             ? !!x.expended
                             : isFocus
                             ? focusPool.value <= 0
                             : isInnate && x.uses?.value != null
                             ? x.uses.value <= 0
-                            : isSpontaneous && level.uses?.value != null
+                            : (isSpontaneous || isFlexible) && level.uses?.value != null
                             ? level.uses.value <= 0
                             : false,
                     }))

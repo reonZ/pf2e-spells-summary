@@ -41,7 +41,7 @@
             }
         }
 
-        .item {
+        .item:not(.cantrip) {
             &:not(:hover):not(.hover) {
                 .spell-range {
                     .uses,
