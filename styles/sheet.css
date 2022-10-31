@@ -26,6 +26,10 @@
   position: absolute;
   width: 100%;
 }
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item .item-controls {
+  padding-right: 0;
+  white-space: nowrap;
+}
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-range .uses,
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-range .focus-pips {
   display: none;

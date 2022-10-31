@@ -41,22 +41,29 @@
             }
         }
 
-        .item:not(.cantrip) {
-            &:not(:hover):not(.hover) {
-                .spell-range {
-                    .uses,
-                    .focus-pips {
-                        display: none;
-                    }
-                }
+        .item {
+            .item-controls {
+                padding-right: 0;
+                white-space: nowrap;
             }
 
-            &:hover,
-            &.hover {
-                .spell-range {
-                    .uses-label,
-                    .focus-label {
-                        display: none;
+            &:not(.cantrip) {
+                &:not(:hover):not(.hover) {
+                    .spell-range {
+                        .uses,
+                        .focus-pips {
+                            display: none;
+                        }
+                    }
+                }
+
+                &:hover,
+                &.hover {
+                    .spell-range {
+                        .uses-label,
+                        .focus-label {
+                            display: none;
+                        }
                     }
                 }
             }
