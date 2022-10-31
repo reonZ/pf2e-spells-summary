@@ -1,5 +1,4 @@
 declare interface SpellcastingEntry {
-    label: string
     level: number
     isCantrip: boolean
     spells: SpellcastingLevelSpell[]
@@ -11,6 +10,7 @@ declare interface SpellcastingLevelSpellCore {
     img: string
     entryId: string
     slotId: number
+    entryName: string
 }
 
 declare interface SpellcastingLevelRitual extends SpellcastingLevelSpellCore {

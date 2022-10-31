@@ -135,7 +135,7 @@
         <button type="button" class="cast-spell">{{localize "PF2E.CastLabel"}}</button>
         {{/if}}
 
-        <div class="item-controls">{{numberFormat spell.check.mod decimals=0 sign=true}} / {{spell.dc.value}}</div>
+        <div class="item-controls" title="{{entryName}}">{{numberFormat spell.check.mod decimals=0 sign=true}} / {{spell.dc.value}}</div>
 
         <div class="item-summary"></div>
     </li>

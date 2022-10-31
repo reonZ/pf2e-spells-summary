@@ -86,6 +86,9 @@ function getRituals(data) {
     data.spellcastingEntries.forEach(entry => {
         if (!entry.isRitual || !entry.hasCollection || !entry.levels.some(x => x.active.some(y => y !== null))) return
 
+        const entryId = entry.id
+        const entryName = entry.name
+
         entry.levels.forEach(level => {
             if (!level.active.length) return
 
@@ -94,9 +97,10 @@ function getRituals(data) {
                     id: x.spell.id,
                     name: x.spell.name,
                     img: x.spell.img,
-                    entryId: entry.id,
                     level: level.level,
                     slotId: i,
+                    entryId,
+                    entryName,
                     time: x.spell.system.time.value,
                     secondary: x.spell.system.secondarycasters.value,
                 }))
@@ -124,12 +128,13 @@ function getEntries(data) {
         const isFocus = !!entry.isFocusPool
         const isSpontaneous = !!entry.isSpontaneous
         const isInnate = !!entry.isInnate
+        const entryName = entry.name
+        const entryId = entry.id
 
         entry.levels.forEach(level => {
             if (!level.active.length) return
 
             entries[level.level] = entries[level.level] || {
-                label: level.label,
                 level: level.level,
                 isCantrip: level.isCantrip,
                 spells: [],
@@ -146,7 +151,8 @@ function getEntries(data) {
                         isVirtual: !!x.virtual,
                         icon: x.spell.system.time.value,
                         components: x.spell.components,
-                        entryId: entry.id,
+                        entryId,
+                        entryName,
                         slotId: i,
                         isPrepared,
                         isFlexible,
