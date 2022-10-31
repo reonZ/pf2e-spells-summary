@@ -11,7 +11,7 @@
     ],
     "esmodules": ["scripts/main.js"],
     "styles": ["styles/sheet.css"],
-    "version": "1.1.0",
+    "version": "1.1.1",
     "relationships": {
         "systems": [
             {
@@ -32,7 +32,7 @@
     "url": "https://github.com/reonZ/pf2e-spells-summary",
     "readme": "https://github.com/reonZ/pf2e-spells-summary/blob/master/README.md",
     "manifest": "https://raw.githubusercontent.com/reonZ/pf2e-spells-summary/master/module.json",
-    "download": "https://github.com/reonZ/pf2e-spells-summary/releases/download/1.1.0/module.zip",
+    "download": "https://github.com/reonZ/pf2e-spells-summary/releases/download/1.1.1/module.zip",
     "changelog": "https://github.com/reonZ/pf2e-spells-summary/releases",
     "bugs": "https://github.com/reonZ/pf2e-spells-summary/issues"
 }

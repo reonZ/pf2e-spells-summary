@@ -8,7 +8,7 @@ To toggle between both modes, you simply need to click on the spellcasting nav b
 
 The alternate version gather, sort and display all the available spells into a single table per level regardless of their category or casting type.
 
-New informations are displayed to make up for the lack of category grouping: `DC`, `Check` and type `Innate`, `Prepared`, `Spontaneous` or `Focus`.
+New informations are displayed to make up for the lack of category grouping: `DC`, `Check` and type `Innate`, `Prepared`, `Spontaneous` or `Focus`. The spellcasting entry name is also displayed when hovering over the `Check/DC` values.
 
 When hovering over a spell, the resources used by the spell will also be dislayed and can be interacted with as shown in the image below.
 
