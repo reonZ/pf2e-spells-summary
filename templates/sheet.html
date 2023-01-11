@@ -37,7 +37,29 @@
         </div>
 
         <div class="spell-range">
-            {{#if (and spell.isInnate spell.uses)}}
+            {{#if spell.isCharge}}
+            <span class="uses-label">{{#if spell.isStaff}}Staff{{else}}Charges{{/if}}</span>
+            {{#if (and spell.isStaff (not entry.isCantrip))}}
+            <div class="uses">
+                <span class="spell-slots-input">
+                    <input 
+                        type="number" 
+                        value="{{spell.parentUses.value}}" 
+                        data-item-id="{{spell.entryId}}" 
+                        data-item-property="flags.pf2e-staves.charges"
+                        placeholder="0" 
+                        {{#unless @root.editable}} disabled{{/unless}}
+                    />
+                </span>
+                {{#if @root.editable}}
+                <a class="spell-slots-increment-reset" data-item-id="{{spell.entryId}}" data-staff="true">
+                    <i class="fas fa-redo"></i>
+                </a>
+                {{/if}}
+            </div>
+            {{/if}}
+
+            {{else if (and spell.isInnate spell.uses)}}
             <span class="uses-label">{{localize 'PF2E.PreparationTypeInnate'}}</span>
             <div class="uses">
                 <span class="spell-slots-input">

@@ -17,3 +17,7 @@ When hovering over a spell, the resources used by the spell will also be dislaye
 <sup>_Resources of a spontaneous `Magic Missile` displayed on hover_</sup>
 
 The alternate mode does not allow to create, edit or delete the spells, nor does it allow to change the spells selected from a spellbook. It is there to make it easier to see what is available during playtime.
+
+## PF2e Staves
+
+This module is compatible with the module [PF2e Staves](https://foundryvtt.com/packages/pf2e-staves)

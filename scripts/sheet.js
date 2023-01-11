@@ -12,6 +12,11 @@ function getSpellcastingTab($html) {
 }
 
 /** @param {JQuery} $html */
+function getSpellcastingOriginalSection($html) {
+    return getSpellcastingTab($html).find('.directory-list.spellcastingEntry-list')
+}
+
+/** @param {JQuery} $html */
 function getSpellcastingSummarySection($html) {
     return getSpellcastingTab($html).find('.directory-list.summary')
 }
@@ -130,6 +135,9 @@ function getEntries(data) {
         const isInnate = !!entry.isInnate
         const entryName = entry.name
         const entryId = entry.id
+        const isCharge = entry.system.prepared.value === 'charge'
+        const isStaff = getProperty(entry, 'flags.pf2e-staves.staveID') !== undefined
+        const charges = { value: /** @type {number} */ (getProperty(entry, 'flags.pf2e-staves.charges') ?? 0), max: 0 }
 
         entry.levels.forEach(level => {
             if (!level.active.length) return
@@ -159,11 +167,15 @@ function getEntries(data) {
                         isInnate,
                         isSpontaneous,
                         isFocus,
+                        isCharge,
+                        isStaff,
                         dc,
                         check,
-                        parentUses: level.uses,
+                        parentUses: isCharge ? charges : level.uses,
                         expended: level.isCantrip
                             ? false
+                            : isCharge
+                            ? charges.value < level.level
                             : isPrepared && !isFlexible
                             ? !!x.expended
                             : isFocus
@@ -224,14 +236,30 @@ async function onItemToChat(event, sheet) {
 }
 
 /**
+ * @param {CharacterSheetPF2e} sheet
+ * @param {string} entryId
+ */
+function onChargeReset(sheet, entryId) {
+    const original = getSpellcastingOriginalSection(sheet.element)
+    const entry = original.find(`.item-container.spellcasting-entry[data-item-id=${entryId}]`)
+    const btn = entry.find('.spell-ability-data .statistic-values a.pf2e-staves-charge')
+    btn[0]?.click()
+}
+
+/**
  * @param {JQuery.ClickEvent<any, any, HTMLElement>} event
  * @param {CharacterSheetPF2e} sheet
  */
 function onSlotsReset(event, sheet) {
     event.preventDefault()
 
-    const { itemId, level } = $(event.currentTarget).data()
+    const { itemId, level, staff } = $(event.currentTarget).data()
     if (!itemId) return
+
+    if (staff) {
+        onChargeReset(sheet, itemId)
+        return
+    }
 
     const item = sheet.actor.items.get(itemId)
     if (!item) return
@@ -267,7 +295,7 @@ function onUsesInputChange(event, sheet) {
     const { itemId, itemProperty } = event.currentTarget.dataset
     if (!itemId || !itemProperty) return
 
-    const value = event.currentTarget.valueAsNumber
+    const value = Math.max(event.currentTarget.valueAsNumber, 0)
     sheet.actor.updateEmbeddedDocuments('Item', [{ _id: itemId, [itemProperty]: value }])
 }
 
