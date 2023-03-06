@@ -16,17 +16,6 @@
             padding: 0;
         }
 
-        .ritual {
-            .spell-range,
-            .spell-components {
-                justify-self: center;
-            }
-
-            button {
-                grid-column: controls;
-            }
-        }
-
         .virtual {
             position: relative;
 
@@ -42,14 +31,37 @@
         }
 
         .item {
+            grid:
+                'name type cast-spell range' auto
+                'content content content content' auto/10fr 6fr 2fr 4fr;
+
+            .spell-type {
+                grid-area: type;
+            }
+
+            .cast-spell {
+                grid-area: cast-spell;
+            }
+
+            .spell-range {
+                grid-area: range;
+                text-align: end;
+            }
+
             .item-controls {
                 padding-right: 0;
                 white-space: nowrap;
             }
 
+            &.ritual:not(.spell-level-header) {
+                .spell-range {
+                    padding-right: 1em;
+                }
+            }
+
             &:not(.cantrip) {
                 &:not(:hover):not(.hover) {
-                    .spell-range {
+                    .spell-type {
                         .uses,
                         .focus-pips {
                             display: none;
@@ -59,7 +71,7 @@
 
                 &:hover,
                 &.hover {
-                    .spell-range {
+                    .spell-type {
                         .uses-label,
                         .focus-label {
                             display: none;
@@ -69,7 +81,7 @@
             }
         }
 
-        .spell-range {
+        .spell-type {
             .item-toggle-prepare {
                 margin-left: 0.25em;
                 color: var(--body);

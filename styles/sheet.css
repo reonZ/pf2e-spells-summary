@@ -7,13 +7,6 @@
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spellbook-header .item-controls {
   padding: 0;
 }
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .ritual .spell-range,
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .ritual .spell-components {
-  justify-self: center;
-}
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .ritual button {
-  grid-column: controls;
-}
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .virtual {
   position: relative;
 }
@@ -26,23 +19,39 @@
   position: absolute;
   width: 100%;
 }
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item {
+  grid: "name type cast-spell range" auto "content content content content" auto/10fr 6fr 2fr 4fr;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item .spell-type {
+  grid-area: type;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item .cast-spell {
+  grid-area: cast-spell;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item .spell-range {
+  grid-area: range;
+  text-align: end;
+}
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item .item-controls {
   padding-right: 0;
   white-space: nowrap;
 }
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-range .uses,
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-range .focus-pips {
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.ritual:not(.spell-level-header) .spell-range {
+  padding-right: 1em;
+}
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-type .uses,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-type .focus-pips {
   display: none;
 }
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):hover .spell-range .uses-label,
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):hover .spell-range .focus-label, .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip).hover .spell-range .uses-label,
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip).hover .spell-range .focus-label {
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):hover .spell-type .uses-label,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):hover .spell-type .focus-label, .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip).hover .spell-type .uses-label,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip).hover .spell-type .focus-label {
   display: none;
 }
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spell-range .item-toggle-prepare {
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spell-type .item-toggle-prepare {
   margin-left: 0.25em;
   color: var(--body);
 }
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spell-range .focus-pips {
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spell-type .focus-pips {
   cursor: pointer;
 }

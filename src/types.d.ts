@@ -31,7 +31,6 @@ interface SpellcastingLevelSpell extends SpellcastingLevelSpellCore {
     }
     icon: string
     isVirtual: boolean
-    components: { focus: boolean; material: boolean; somatic: boolean; verbal: boolean }
     isPrepared: boolean
     isFlexible: boolean
     isInnate: boolean

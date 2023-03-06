@@ -12,11 +12,9 @@
             </h3>
         </div>
 
-        <div class="spell-range"></div>
+        <div class="spell-type">{{localize 'PF2E.SpellCategoryLabel'}}</div>
 
-        <div class="spell-components">{{localize "PF2E.SpellComponentsLabel"}}</div>
-
-        <div class="item-controls">Check / DC</div>
+        <div class="spell-range">{{localize 'PF2E.SpellRangeLabel'}}</div>
     </li>
 
     {{#each entry.spells as |spell|}}
@@ -30,7 +28,7 @@
             <h4>{{spell.name}}{{{actionGlyph spell.icon}}}</h4>
         </div>
 
-        <div class="spell-range">
+        <div class="spell-type">
             {{#if spell.isCharge}}
             <span class="uses-label">{{#if spell.isStaff}}Staff{{else}}Charges{{/if}}</span>
             {{#if (and spell.isStaff (not entry.isCantrip))}}
@@ -117,23 +115,11 @@
             {{/if}}
         </div>
 
-        <div class="spell-components tags">
-            {{#if spell.components.focus}}
-            <span class="tag tag_transparent">{{localize "PF2E.SpellComponentShortF"}}</span>
-            {{/if}} {{#if spell.components.material}}
-            <span class="tag tag_transparent">{{localize "PF2E.SpellComponentShortM"}}</span>
-            {{/if}} {{#if spell.components.somatic}}
-            <span class="tag tag_transparent">{{localize "PF2E.SpellComponentShortS"}}</span>
-            {{/if}} {{#if spell.components.verbal}}
-            <span class="tag tag_transparent">{{localize "PF2E.SpellComponentShortV"}}</span>
-            {{/if}}
-        </div>
-
         {{#if @root.editable}}
         <button type="button" class="cast-spell">{{localize "PF2E.CastLabel"}}</button>
         {{/if}}
 
-        <div class="item-controls" title="{{entryName}}">{{numberFormat spell.check.mod decimals=0 sign=true}} / {{spell.dc.value}}</div>
+        <div class="spell-range" data-tooltip="{{entryName}}: DC {{spell.dc.value}}">100 feet.</div>
 
     </li>
     {{/each}}
@@ -146,11 +132,9 @@
             <h3>{{localize 'PF2E.SpellRitualLabel'}}</h3>
         </div>
 
+        <div class="spell-type">{{localize 'PF2E.SpellTimeLabel'}}</div>
+
         <div class="spell-range">{{localize 'PF2E.LevelLabel'}}</div>
-
-        <div class="spell-components">{{localize "PF2E.SpellTimeLabel"}}</div>
-
-        <div class="item-controls"></div>
     </li>
 
     {{#each rituals as |spell|}}
@@ -163,13 +147,13 @@
             <h4>{{spell.name}}</h4>
         </div>
 
-        <div class="spell-range">{{spell.level}}</div>
-
-        <div class="spell-components">{{spell.time}}</div>
+        <div class="spell-type">{{spell.time}}</div>
 
         {{#if @root.editable}}
         <button type="button" class="cast-spell">{{localize "PF2E.CastLabel"}}</button>
         {{/if}}
+
+        <div class="spell-range">{{spell.level}}</div>
     </li>
     {{/each}}
     {{/if}}

@@ -122,7 +122,6 @@ function getEntries(data: CharacterSheetData) {
                     uses: active.uses,
                     isVirtual: !!active.virtual,
                     icon: active.spell.system.time.value,
-                    components: active.spell.components,
                     entryId,
                     entryName,
                     slotId: i,
@@ -159,7 +158,6 @@ function getEntries(data: CharacterSheetData) {
         ? (a, b) => (a.order === b.order ? a.name.localeCompare(b.name) : a.order - b.order)
         : (a, b) => a.name.localeCompare(b.name)
     entries.forEach(entry => entry.spells.sort(sort))
-    // entries.forEach(entry => entry.spells.sort((a, b) => a.name.localeCompare(b.name)))
 
     return entries
 }
