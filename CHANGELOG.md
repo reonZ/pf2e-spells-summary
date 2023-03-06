@@ -1,5 +1,9 @@
 # 1.3.0
 
+-   removed components section from the layout
+-   removed CHECK/DC section from the layout
+-   added a range section to the layout
+-   now when hovering over the range section of a spell line, it will show the spellcasting entry and the DC
 -   added a setting to sort spells by types before alphabetically
 
 # 1.2.0
