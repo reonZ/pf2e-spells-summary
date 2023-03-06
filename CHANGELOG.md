@@ -1,3 +1,7 @@
+# 1.3.1
+
+-   fixed placeholder range...
+
 # 1.3.0
 
 -   removed components section from the layout
