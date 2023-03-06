@@ -30,6 +30,7 @@ interface SpellcastingLevelSpell extends SpellcastingLevelSpellCore {
         max: number
     }
     icon: string
+    range: string
     isVirtual: boolean
     isPrepared: boolean
     isFlexible: boolean
