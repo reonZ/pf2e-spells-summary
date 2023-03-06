@@ -1,0 +1,10 @@
+{
+    "pf2e-spells-summary": {
+        "settings": {
+            "order": {
+                "name": "Sort By Types",
+                "hint": "Should the spells be sorted by types before alphabetically."
+            }
+        }
+    }
+}

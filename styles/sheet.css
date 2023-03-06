@@ -46,6 +46,3 @@
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spell-range .focus-pips {
   cursor: pointer;
 }
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item-summary {
-  display: none;
-}

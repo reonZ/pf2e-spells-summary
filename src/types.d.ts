@@ -1,10 +1,15 @@
-declare interface SpellcastingEntry {
+declare const game: GamePF2e
+declare const canvas: CanvasPF2e
+declare const ui: UiPF2e
+declare const CONFIG: ConfigPF2e
+
+interface SpellcastingLevelRitual extends SpellcastingLevelSpellCore {
     level: number
-    isCantrip: boolean
-    spells: SpellcastingLevelSpell[]
+    time: string
+    secondary: string
 }
 
-declare interface SpellcastingLevelSpellCore {
+interface SpellcastingLevelSpellCore {
     id: string
     name: string
     img: string
@@ -13,13 +18,13 @@ declare interface SpellcastingLevelSpellCore {
     entryName: string
 }
 
-declare interface SpellcastingLevelRitual extends SpellcastingLevelSpellCore {
+interface SpellcastingLevelEntry {
     level: number
-    time: string
-    secondary: number
+    isCantrip: boolean
+    spells: SpellcastingLevelSpell[]
 }
 
-declare interface SpellcastingLevelSpell extends SpellcastingLevelSpellCore {
+interface SpellcastingLevelSpell extends SpellcastingLevelSpellCore {
     uses?: {
         value?: number | undefined
         max: number
@@ -39,4 +44,5 @@ declare interface SpellcastingLevelSpell extends SpellcastingLevelSpellCore {
         max: number
     }
     expended: boolean
+    order: number
 }

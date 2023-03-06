@@ -1,0 +1,10 @@
+{
+    "pf2e-spells-summary": {
+        "settings": {
+            "order": {
+                "name": "Trier Par Types",
+                "hint": "Les sorts doivent-ils être triés par types avant d'être classés par ordre alphabétique."
+            }
+        }
+    }
+}
