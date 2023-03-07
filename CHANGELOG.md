@@ -1,3 +1,7 @@
+# 1.4.0
+
+-   if a focus cantrip name includes any of the words `amp`, `psi`, `psy`, `psychic` or `amped` between parentheses (i.e. `Shield (Amped)`), it will be considered as a psychich amped cantrip and will display the focus pool to be manipulated.
+
 # 1.3.2
 
 -   debug stuff
