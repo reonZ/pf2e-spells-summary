@@ -83,7 +83,7 @@ function getRituals(data: CharacterSheetData) {
     return rituals
 }
 
-const AMPED_REGEX = /amp|psi|psy/i
+const AMPED_REGEX = /\((amp|psi|psy|psychic|amped)\)/i
 
 function getEntries(data: CharacterSheetData) {
     const focusPool = data.data.resources.focus
