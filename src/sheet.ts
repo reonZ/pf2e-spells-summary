@@ -87,8 +87,6 @@ function getEntries(data: CharacterSheetData) {
     const focusPool = data.data.resources.focus
     const entries: SpellcastingLevelEntry[] = []
 
-    console.log(data.spellcastingEntries)
-
     data.spellcastingEntries.forEach(entry => {
         if (entry.isRitual || !entry.hasCollection || !entry.levels.some(x => x.active.some(y => y !== null))) return
 
