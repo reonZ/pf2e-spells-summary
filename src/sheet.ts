@@ -83,6 +83,8 @@ function getRituals(data: CharacterSheetData) {
     return rituals
 }
 
+const AMPED_REGEX = /amp|psi|psy/i
+
 function getEntries(data: CharacterSheetData) {
     const focusPool = data.data.resources.focus
     const entries: SpellcastingLevelEntry[] = []
@@ -106,11 +108,12 @@ function getEntries(data: CharacterSheetData) {
         entry.levels.forEach(slot => {
             if (!slot.active.length) return
 
+            const isCantrip = slot.isCantrip
             const activeSpells = slot.active.filter(active => active) as ActiveSpell[]
 
             entries[slot.level] ??= {
                 level: slot.level,
-                isCantrip: slot.isCantrip,
+                isCantrip,
                 spells: [],
             }
 
@@ -133,6 +136,7 @@ function getEntries(data: CharacterSheetData) {
                     isFocus,
                     isCharge,
                     isStaff,
+                    isAmpedCantrip: isCantrip && isFocus ? AMPED_REGEX.test(active.spell.name) : false,
                     dc,
                     check,
                     parentUses: isCharge ? charges : slot.uses,

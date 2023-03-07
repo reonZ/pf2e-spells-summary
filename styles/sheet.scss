@@ -59,7 +59,8 @@
                 }
             }
 
-            &:not(.cantrip) {
+            &:not(.cantrip),
+            &.amped {
                 &:not(:hover):not(.hover) {
                     .spell-type {
                         .uses,

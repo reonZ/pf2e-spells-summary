@@ -40,12 +40,15 @@
   padding-right: 1em;
 }
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-type .uses,
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-type .focus-pips {
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):not(:hover):not(.hover) .spell-type .focus-pips, .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.amped:not(:hover):not(.hover) .spell-type .uses,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.amped:not(:hover):not(.hover) .spell-type .focus-pips {
   display: none;
 }
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):hover .spell-type .uses-label,
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip):hover .spell-type .focus-label, .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip).hover .spell-type .uses-label,
-.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip).hover .spell-type .focus-label {
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item:not(.cantrip).hover .spell-type .focus-label, .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.amped:hover .spell-type .uses-label,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.amped:hover .spell-type .focus-label, .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.amped.hover .spell-type .uses-label,
+.app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .item.amped.hover .spell-type .focus-label {
   display: none;
 }
 .app.sheet.actor.character .sheet-content > .tab[data-tab=spellcasting] > .directory-list.summary .spell-type .item-toggle-prepare {

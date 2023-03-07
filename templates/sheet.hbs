@@ -18,9 +18,10 @@
     </li>
 
     {{#each entry.spells as |spell|}}
-    <li class="item spell{{#if spell.isVirtual}} virtual{{/if}}{{#if entry.isCantrip}} cantrip{{/if}}" data-item-id="{{spell.id}}"
-        data-entry-id="{{spell.entryId}}" data-slot-level="{{entry.level}}" {{#if spell.isPrepared}}data-slot-id="{{spell.slotId}}" {{/if}}
-        data-item-summary-id="{{spell.id}}-{{entry.level}}-{{spell.slotId}}" data-expended-state="{{spell.expended}}">
+    <li class="item spell{{#if spell.isVirtual}} virtual{{/if}}{{#if entry.isCantrip}} cantrip{{/if}}{{#if spell.isAmpedCantrip}} amped{{/if}}"
+        data-item-id="{{spell.id}}" data-entry-id="{{spell.entryId}}" data-slot-level="{{entry.level}}" {{#if
+        spell.isPrepared}}data-slot-id="{{spell.slotId}}" {{/if}} data-item-summary-id="{{spell.id}}-{{entry.level}}-{{spell.slotId}}"
+        data-expended-state="{{spell.expended}}">
         <div class="item-name">
             <div class="item-image">
                 <img class="item-icon" src="{{spell.img}}" alt="{{spell.name}}" />
@@ -64,7 +65,7 @@
             {{else if spell.isInnate}}
             {{localize 'PF2E.PreparationTypeInnate'}}
 
-            {{else if (and @root.editable spell.isFocus (not entry.isCantrip))}}
+            {{else if (and @root.editable spell.isFocus (or spell.isAmpedCantrip (not entry.isCantrip)))}}
             <span class="focus-label">{{localize 'PF2E.SpellFocusLabel'}}</span>
             <span class="pips focus-pips">
                 {{#times @root.focusPool.max}}

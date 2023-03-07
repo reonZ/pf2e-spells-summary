@@ -36,6 +36,7 @@ interface SpellcastingLevelSpell extends SpellcastingLevelSpellCore {
     isFlexible: boolean
     isInnate: boolean
     isSpontaneous: boolean
+    isAmpedCantrip: boolean
     isFocus: boolean
     dc: { value: number }
     check: { mod: number }
