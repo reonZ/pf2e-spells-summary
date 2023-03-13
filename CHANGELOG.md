@@ -1,3 +1,7 @@
+# 1.4.1
+
+-   fixed an bug with rituals caused by changes in system version `4.9.0`
+
 # 1.4.0
 
 -   if a focus cantrip name includes any of the words `amp`, `psi`, `psy`, `psychic` or `amped` between parentheses (i.e. `Shield (Amped)`), it will be considered as a psychic amped cantrip and will display the focus pool to be manipulated.
