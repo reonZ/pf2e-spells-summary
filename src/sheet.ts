@@ -101,7 +101,7 @@ function getEntries(data: CharacterSheetData) {
         const isInnate = !!entry.isInnate
         const entryName = entry.name
         const entryId = entry.id
-        const isCharge = entry.system.prepared.value === 'charge'
+        const isCharge = entry.system?.prepared?.value === 'charge'
         const isStaff = getProperty(entry, 'flags.pf2e-staves.staveID') !== undefined
         const charges = { value: getProperty<number>(entry, 'flags.pf2e-staves.charges') ?? 0, max: 0 }
 
