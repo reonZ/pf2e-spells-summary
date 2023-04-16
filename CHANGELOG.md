@@ -1,3 +1,7 @@
+# 1.4.2
+
+-   added taiwanese mandarin localization
+
 # 1.4.1
 
 -   fixed an bug with rituals caused by changes in system version `4.9.0`
