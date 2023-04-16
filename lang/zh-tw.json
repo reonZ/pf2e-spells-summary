@@ -1,0 +1,10 @@
+{
+    "pf2e-spells-summary": {
+        "settings": {
+            "order": {
+                "name": "按類型排序",
+                "hint": "在按字母順序排序之前，法術是否應該按類型進行排序。"
+            }
+        }
+    }
+}
