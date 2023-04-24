@@ -106,7 +106,7 @@ function getEntries(data: CharacterSheetData) {
         const charges = { value: getProperty<number>(entry, 'flags.pf2e-staves.charges') ?? 0, max: 0 }
 
         entry.levels.forEach(slot => {
-            if (!slot.active.length) return
+            if (!slot.active.length || slot.uses?.max === 0) return
 
             const isCantrip = slot.isCantrip
             const activeSpells = slot.active.filter(active => active) as ActiveSpell[]
@@ -118,43 +118,48 @@ function getEntries(data: CharacterSheetData) {
             }
 
             entries[slot.level]!.spells.push(
-                ...activeSpells.flatMap((active, i) => ({
-                    id: active.spell.id,
-                    name: active.spell.name,
-                    img: active.spell.img,
-                    uses: active.uses,
-                    isVirtual: !!active.virtual,
-                    icon: active.spell.system.time.value,
-                    entryId,
-                    entryName,
-                    slotId: i,
-                    range: active.spell.system.range.value,
-                    isPrepared,
-                    isFlexible,
-                    isInnate,
-                    isSpontaneous,
-                    isFocus,
-                    isCharge,
-                    isStaff,
-                    isAmpedCantrip: isCantrip && isFocus ? AMPED_REGEX.test(active.spell.name) : false,
-                    dc,
-                    check,
-                    parentUses: isCharge ? charges : slot.uses,
-                    expended: slot.isCantrip
-                        ? false
-                        : isCharge
-                        ? charges.value < slot.level
-                        : isPrepared && !isFlexible
-                        ? !!active.expended
-                        : isFocus
-                        ? focusPool.value <= 0
-                        : isInnate && active.uses?.value != null
-                        ? active.uses.value <= 0
-                        : (isSpontaneous || isFlexible) && slot.uses?.value != null
-                        ? slot.uses.value <= 0
-                        : false,
-                    order: isCharge ? 0 : isPrepared ? 1 : isFocus ? 2 : isInnate ? 3 : isSpontaneous ? 4 : 5,
-                }))
+                ...activeSpells
+                    .flatMap((active, i) => {
+                        if (active.uses?.max === 0) return
+                        return {
+                            id: active.spell.id,
+                            name: active.spell.name,
+                            img: active.spell.img,
+                            uses: active.uses,
+                            isVirtual: !!active.virtual,
+                            icon: active.spell.system.time.value,
+                            entryId,
+                            entryName,
+                            slotId: i,
+                            range: active.spell.system.range.value,
+                            isPrepared,
+                            isFlexible,
+                            isInnate,
+                            isSpontaneous,
+                            isFocus,
+                            isCharge,
+                            isStaff,
+                            isAmpedCantrip: isCantrip && isFocus ? AMPED_REGEX.test(active.spell.name) : false,
+                            dc,
+                            check,
+                            parentUses: isCharge ? charges : slot.uses,
+                            expended: slot.isCantrip
+                                ? false
+                                : isCharge
+                                ? charges.value < slot.level
+                                : isPrepared && !isFlexible
+                                ? !!active.expended
+                                : isFocus
+                                ? focusPool.value <= 0
+                                : isInnate && active.uses?.value != null
+                                ? active.uses.value <= 0
+                                : (isSpontaneous || isFlexible) && slot.uses?.value != null
+                                ? slot.uses.value <= 0
+                                : false,
+                            order: isCharge ? 0 : isPrepared ? 1 : isFocus ? 2 : isInnate ? 3 : isSpontaneous ? 4 : 5,
+                        }
+                    })
+                    .filter(Boolean)
             )
         })
     })
@@ -217,6 +222,7 @@ function onSlotsReset(event: JQuery.ClickEvent<any, any, HTMLElement>, sheet: Ch
     if (!item) return
 
     if (item.isOfType('spellcastingEntry')) {
+        // @ts-expect-error
         const { system } = item.toObject()
         if (!system.slots) return
 
