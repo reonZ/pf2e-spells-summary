@@ -1,3 +1,7 @@
+# 1.5.0
+
+-   spells in spell slots with 0 max use will not be shown anymore (useful for signature spells shenanigans) [#12](https://github.com/reonZ/pf2e-spells-summary/issues/12#issue-1680104852)
+
 # 1.4.2
 
 -   added taiwanese mandarin localization
