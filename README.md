@@ -1,5 +1,7 @@
 # FoundryVTT PF2e Spells Summary
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K6M2V13)
+
 ![](/readme/before-after.webp)
 
 This module offers the ability to toggle between the regular and an alternate version of the character sheet's `Spellcasting` tab at any moment.
