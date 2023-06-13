@@ -14,7 +14,7 @@
     ],
     "compatibility": {
         "minimum": "10.291",
-        "verified": "10"
+        "verified": "11"
     },
     "version": "1.6.0",
     "manifestPlusVersion": "1.2.0",
