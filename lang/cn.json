@@ -1,0 +1,10 @@
+{
+    "pf2e-spells-summary": {
+        "settings": {
+            "order": {
+                "name": "按类别分类",
+                "hint": "法术是否应该先按类型分类，再按字母顺序。"
+            }
+        }
+    }
+}
