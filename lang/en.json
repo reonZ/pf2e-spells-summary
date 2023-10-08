@@ -5,6 +5,8 @@
                 "name": "Sort By Types",
                 "hint": "Should the spells be sorted by types before alphabetically."
             }
-        }
+        },
+        "staff": "Staff",
+        "charges": "Charges"
     }
 }
